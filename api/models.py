@@ -1,13 +1,15 @@
 from turtle import title
 from django.db import models
 from django.conf import settings
-
+from django.core.validators import MaxValueValidator
 # Create your models here.
 
 
 class Category(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=False)
+    image = models.ImageField(null=True, blank=True,
+                              default='/placeholder.png')
     featured_product = models.ForeignKey(
         'Product', on_delete=models.SET_NULL, null=True, related_name='+', blank=True)
 
@@ -18,6 +20,8 @@ class Category(models.Model):
 class Brand(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True,
+                              default='/placeholder.png')
     featured_product = models.ForeignKey(
         'Product', on_delete=models.SET_NULL, null=True, related_name='+', blank=True)
 
@@ -51,7 +55,8 @@ class Review(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200, null=True, blank=True)
-    rating = models.IntegerField(null=True, blank=True, default=0)
+    rating = models.IntegerField(
+        null=True, blank=True, default=0, validators=[MaxValueValidator(5)])
     comment = models.TextField(null=True, blank=True)
     createdAt = models.DateTimeField(auto_now_add=True)
 
@@ -75,6 +80,9 @@ class Order(models.Model):
 
     def __str__(self) -> str:
         return f'{str(self.createdAt)} at {"Deleted User" if self.user == None else self.user.username}'
+    
+    class Meta:
+        ordering = ('-createdAt',)
 
 
 class OrderItem(models.Model):

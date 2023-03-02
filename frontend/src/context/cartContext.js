@@ -22,7 +22,7 @@ export const CartProvider = ({ children }) => {
   const [paymentMethod, setPaymentMethod] = useState(
     localStorage.getItem("paymentMethod")
       ? localStorage.getItem("paymentMethod")
-      : "PayPal"
+      : "Stripe"
   );
   const navigate = useNavigate();
   const {logout} = useContext(UserContext);
@@ -102,7 +102,7 @@ export const CartProvider = ({ children }) => {
       .reduce((acc, prod) => acc + prod.qty * prod.price, 0)
       .toFixed(2)
   );
-  const shippingPrice = totalItemsPrice > 100 ? 0 : 10;
+  const shippingPrice = totalItemsPrice > 1000 ? (totalItemsPrice >= 2000 ? 0 : 100) : 250;
   const taxPrice = Number((0.05 * totalItemsPrice).toFixed(2));
   const totalPrice = totalItemsPrice + shippingPrice + taxPrice;
 

@@ -59,7 +59,7 @@ function CartPage(props) {
                     </Link>
                   </Col>
                   <Col xs={3} md={2}>
-                    ${product.price}
+                    ₹{product.price}
                   </Col>
                   <Col xs={6} md={3}>
                     <Form.Select
@@ -109,7 +109,7 @@ function CartPage(props) {
                 items
               </h2>
               <h4>
-                $
+                ₹
                 {productsInCart
                   .reduce(
                     (acc, product) => acc + product.qty * product.price,

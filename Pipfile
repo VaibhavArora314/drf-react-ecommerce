@@ -10,6 +10,8 @@ pillow = "*"
 django-cors-headers = "*"
 djangorestframework-simplejwt = "*"
 djoser = "*"
+stripe = "*"
+python-dotenv = "*"
 
 [dev-packages]
 

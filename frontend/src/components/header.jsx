@@ -2,20 +2,22 @@ import React, { useContext } from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import UserContext from "../context/userContext";
+import SearchBox from "./searchBox";
 
-function Header(props) {
+function Header({keyword,setKeyword}) {
   const { userInfo } = useContext(UserContext);
 
   return (
     <header>
       <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
-        <Container>
+        <Container className="">
           <LinkContainer to="/">
             <Navbar.Brand>Proshop</Navbar.Brand>
           </LinkContainer>
+          <SearchBox keyword={keyword} setKeyword={setKeyword}/>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
+            <Nav className="ms-auto">
               <LinkContainer to="/cart">
                 <Nav.Link>
                   <i className="fas fa-shopping-cart" /> Cart

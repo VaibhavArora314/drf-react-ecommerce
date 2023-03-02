@@ -27,26 +27,25 @@ function PaymentPage(props) {
           <Col>
             <Form.Check
               type="radio"
-              label="PayPal or Credit Card"
-              id="paypal"
+              label="Stripe or Debit Card"
+              id="stripe"
               name="paymentMethod"
-              value="PayPal"
+              value="Stripe"
               onChange={(e) => {
                 setPaymentMethod(e.currentTarget.value);
               }}
-              checked={"PayPal" == paymentMethod}
+              checked={"Stripe" == paymentMethod}
             ></Form.Check>
-            <Form.Check
+            {/* <Form.Check
               type="radio"
               label="Cash on Delivery"
               id="cod"
-              name="cod"
               value="Cash on Delivery"
               onChange={(e) => {
                 setPaymentMethod(e.currentTarget.value);
               }}
               checked={"Cash on Delivery" == paymentMethod}
-            ></Form.Check>
+            ></Form.Check> */}
           </Col>
         </Form.Group>
         <Button type="submit" variant="primary">

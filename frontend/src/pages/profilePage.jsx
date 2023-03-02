@@ -1,10 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
-import Loader from "../components/loader";
 import Message from "../components/message";
 import UserContext from "../context/userContext";
-import FormContainer from "../components/formContainer";
+import OrdersList from "../components/ordersList";
 
 function ProfilePage(props) {
   const { userInfo, updateProfile } = useContext(UserContext);
@@ -78,6 +77,7 @@ function ProfilePage(props) {
       </Col>
       <Col md={8}>
         <h1>My Orders</h1>
+        <OrdersList />
       </Col>
     </Row>
   );

@@ -14,6 +14,7 @@ import ProductsContext from "../context/productsContext";
 import Loader from "../components/loader";
 import Message from "../components/message";
 import CartContext from "../context/cartContext";
+import ReviewsList from "../components/reviewsList";
 
 function ProductPage(props) {
   const { id } = useParams();
@@ -80,7 +81,7 @@ function ProductPage(props) {
                   <Row>
                     <Col>Price:</Col>
                     <Col>
-                      <strong>${product.price}</strong>
+                      <strong>₹{product.price}</strong>
                     </Col>
                   </Row>
                 </ListGroup.Item>
@@ -133,6 +134,11 @@ function ProductPage(props) {
                 </ListGroup.Item>
               </ListGroup>
             </Card>
+          </Col>
+        </Row>
+        <Row className="my-3">
+          <Col md={6}>
+            <ReviewsList product={product}/>
           </Col>
         </Row>
       </div>

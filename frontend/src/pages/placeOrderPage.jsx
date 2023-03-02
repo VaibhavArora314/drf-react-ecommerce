@@ -80,7 +80,7 @@ function PlacerOrderPage(props) {
                           </Link>
                         </Col>
                         <Col sm={3} md={4}>
-                          {product.qty} X ${product.price} = $
+                          {product.qty} X ₹{product.price} = ₹
                           {(product.qty * product.price).toFixed(2)}
                         </Col>
                       </Row>
@@ -100,25 +100,25 @@ function PlacerOrderPage(props) {
               <ListGroup.Item>
                 <Row>
                   <Col>Items</Col>
-                  <Col>${totalItemsPrice}</Col>
+                  <Col>₹{totalItemsPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Shipping</Col>
-                  <Col>${shippingPrice}</Col>
+                  <Col>₹{shippingPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Tax</Col>
-                  <Col>${taxPrice}</Col>
+                  <Col>₹{taxPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Total</Col>
-                  <Col>${totalPrice}</Col>
+                  <Col>₹{totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
@@ -136,9 +136,9 @@ function PlacerOrderPage(props) {
             </ListGroup>
           </Card>
 
-          {totalItemsPrice <= 100 ? (
+          {totalItemsPrice <= 2000 ? (
             <Message variant="info">
-              Free shipping on minimum item value $100.
+              Free shipping on minimum item value ₹2000.
             </Message>
           ) : (
             <Message variant="info">Free shipping on this order!</Message>

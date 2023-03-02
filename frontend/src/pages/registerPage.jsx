@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
-import Loader from "../components/loader";
 import Message from "../components/message";
 import UserContext from "../context/userContext";
 import FormContainer from "../components/formContainer";

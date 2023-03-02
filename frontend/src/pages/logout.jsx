@@ -1,15 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import UserContext from "../context/userContext";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import Loader from "../components/loader";
 
 function Logout(props) {
   const { userInfo, logout } = useContext(UserContext);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  if (userInfo && userInfo.username) logout();
+  useEffect(() => {
+    if (userInfo && userInfo.username) logout();
+    setLoading(false);
+    navigate("/login");
+  }, []);
 
-    window.location = '/login'
+  if (loading) return <Loader />;
 }
 
 export default Logout;

@@ -71,8 +71,8 @@ export const UserProvider = ({ children }) => {
   };
 
   const logout = () => {
-    // setAuthTokens(null);
-    // setUserInfo(null);
+    setAuthTokens(null);
+    setUserInfo(null);
     localStorage.removeItem("authTokens");
     localStorage.removeItem("userInfo");
     // httpService.setJwt(undefined)

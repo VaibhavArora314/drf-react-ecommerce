@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
-import Loader from "../components/loader";
 import Message from "../components/message";
 import UserContext from "../context/userContext";
 import FormContainer from "../components/formContainer";
@@ -11,8 +10,9 @@ function LoginPage(props) {
   const [password, setPassword] = useState("");
   const { userInfo, login, error } = useContext(UserContext);
   const navigate = useNavigate();
-  const redirect = window.location.search
-    ? "/" + window.location.search.split("=")[1]
+  const [searchParams,setSearchParams] = useSearchParams()
+  const redirect = searchParams.get('redirect')
+    ? "/" + searchParams.get('redirect')
     : "/";
 
   useEffect(() => {

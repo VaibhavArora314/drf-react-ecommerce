@@ -5,6 +5,7 @@ import httpService from "../services/httpService";
 import UserContext from "../context/userContext";
 import Loader from "../components/loader";
 import Message from "../components/message";
+import StripePaymentWrapper from "../components/stripePaymentWrapper";
 
 function OrderDetailsPage(props) {
   const [loading, setLoading] = useState(true);
@@ -15,15 +16,6 @@ function OrderDetailsPage(props) {
   const navigate = useNavigate();
 
   if (!userInfo || !userInfo.username) navigate("/login");
-
-  const payOrder = async (id) => {
-    try {
-      const {data} = await httpService.put(`/api/orders/${id}/pay`);
-      console.log(data);
-    } catch (ex) {
-      console.log(ex)
-    }
-  }
 
   useEffect(() => {
     const fetchOrder = async () => {
@@ -119,7 +111,7 @@ function OrderDetailsPage(props) {
                             </Link>
                           </Col>
                           <Col sm={3} md={4}>
-                            {product.qty} X ${product.price} = $
+                            {product.qty} X ₹{product.price} = ₹
                             {(product.qty * product.price).toFixed(2)}
                           </Col>
                         </Row>
@@ -140,7 +132,7 @@ function OrderDetailsPage(props) {
                   <Row>
                     <Col>Items</Col>
                     <Col>
-                      $
+                      ₹
                       {orderDetails.totalPrice -
                         orderDetails.taxPrice -
                         orderDetails.shippingPrice}
@@ -150,23 +142,28 @@ function OrderDetailsPage(props) {
                 <ListGroup.Item>
                   <Row>
                     <Col>Shipping</Col>
-                    <Col>${orderDetails.shippingPrice}</Col>
+                    <Col>₹{orderDetails.shippingPrice}</Col>
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Row>
                     <Col>Tax</Col>
-                    <Col>${orderDetails.taxPrice}</Col>
+                    <Col>₹{orderDetails.taxPrice}</Col>
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Row>
                     <Col>Total</Col>
-                    <Col>${orderDetails.totalPrice}</Col>
+                    <Col>₹{orderDetails.totalPrice}</Col>
                   </Row>
                 </ListGroup.Item>
               </ListGroup>
             </Card>
+            <Row className="p-2">
+              {!orderDetails.isPaid && (
+                <StripePaymentWrapper id={orderDetails.id} />
+              )}
+            </Row>
           </Col>
         </Row>
       )}

@@ -9,13 +9,19 @@ export const ProductsProvider = ({ children }) => {
   const [productsLoaded, setProductsLoaded] = useState(false);
   const [products, setProducts] = useState([]);
   const [error, setError] = useState("");
+  const [brands, setBrands] = useState([]);
+  const [categories, setCategories] = useState([]);
 
-  const loadProducts = async () => {
-    if (productsLoaded) return;
+  const loadProducts = async (forced = false) => {
+    if (productsLoaded && !forced) return;
 
     try {
       const { data } = await httpService.get("/api/products/");
       setProducts(data);
+      const { data: brandsData } = await httpService.get("/api/brands/");
+      setBrands(brandsData);
+      const { data: categoriesData } = await httpService.get("/api/category/");
+      setCategories(categoriesData);
       setError("");
     } catch (ex) {
       setError(ex.message);
@@ -38,11 +44,15 @@ export const ProductsProvider = ({ children }) => {
       return {};
     }
   };
+
   const contextData = {
     products,
     error,
     loadProducts,
     loadProduct,
+    // productsLoaded,
+    brands,
+    categories,
   };
 
   return (
