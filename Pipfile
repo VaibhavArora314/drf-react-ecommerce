@@ -12,6 +12,9 @@ djangorestframework-simplejwt = "*"
 djoser = "*"
 stripe = "*"
 python-dotenv = "*"
+dj-database-url = "*"
+psycopg2-binary = "*"
+mysqlclient = "*"
 
 [dev-packages]
 

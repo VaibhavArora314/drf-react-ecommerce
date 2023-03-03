@@ -10,7 +10,7 @@ values
   (3, 'Sony', null, null,'/sony.png'),
   (4, 'Cannon', null, null,'/cannon.png'),
   (5, 'Amazon', null, null,'/amazon.webp'),
-  (6, "Kellogg's", null, null,'/kelloggs.png'),
+  (6, 'Kelloggs', null, null,'/kelloggs.png'),
   (7, 'Coca Cola', null, null,'/coca-cola.png');
 
 insert into api_product (id, name, image, description, brand_id, category_id, price, countInStock, rating, numReviews, createdAt) 
