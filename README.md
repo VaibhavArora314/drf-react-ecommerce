@@ -1,5 +1,5 @@
 # Ecommerce website
-Fully functional e-commerce website with back-end using Django and front-end using React. Integrated with Stripe for payments and used React-bootstrap components for styling
+Fully functional e-commerce website with back-end using Django and front-end using React. Integrated with Stripe for payments and used React-bootstrap components for styling. Project is live at: [https://proshop-web.vercel.app](https://proshop-web.vercel.app).
 
 ## Demo video
 https://user-images.githubusercontent.com/84830429/222736252-235eb893-a296-430f-9c7f-123fc31cedd6.mp4
@@ -30,6 +30,10 @@ python3 manage.py migrate
 ```
 6. Now turn on the server using
 ```
-python3 manage.py runserver --nostatic
+python3 manage.py runserver
 ```
 Now the application is running at port 8000 by default i.e. ```http://127.0.0.1:8000```.
+
+
+### Credits:
+Took inspiration from [Django with React | An Ecommerce Website](https://www.udemy.com/course/django-with-react-an-ecommerce-website/).
