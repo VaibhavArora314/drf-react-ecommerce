@@ -38,6 +38,7 @@ function SearchPage() {
     fetchData();
     setSelectedBrand(brandParam);
     setSelectedCategory(categoryParam);
+    window.scrollTo(0, 0);
   }, []);
 
   let filteredProducts = products.filter((product) =>
