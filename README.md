@@ -33,3 +33,7 @@ python3 manage.py migrate
 python3 manage.py runserver
 ```
 Now the application is running at port 8000 by default i.e. ```http://127.0.0.1:8000```.
+
+
+### Credits:
+Took inspiration from [Django with React | An Ecommerce Website](https://www.udemy.com/course/django-with-react-an-ecommerce-website/).
