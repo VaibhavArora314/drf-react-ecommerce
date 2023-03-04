@@ -20,8 +20,6 @@ export const UserProvider = ({ children }) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 
-  // httpService.setJwt(authTokens && authTokens.access ? authTokens.access : null)
-
   const login = async (username, password) => {
     try {
       const { data } = await httpService.post("/auth/jwt/create/", {
